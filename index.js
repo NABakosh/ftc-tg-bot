@@ -3,6 +3,22 @@ const fs = require('fs')
 const { Client } = require('pg')
 require('dotenv').config()
 
+const express = require('express')
+const app = express()
+
+// Бот продолжает работать нормально
+require('./index') // Импорт основного бота
+
+// Открываем фиктивный порт
+const PORT = process.env.PORT || 3000
+app.get('/', (req, res) => {
+	res.send('Telegram Bot is running')
+})
+
+app.listen(PORT, () => {
+	console.log(`Listening on port ${PORT}`)
+})
+
 let mode = 0
 
 const startKey = new Keyboard().text('FLL').text('FTC').resized()
