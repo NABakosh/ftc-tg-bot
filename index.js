@@ -3,7 +3,6 @@ const fs = require('fs')
 const { Client } = require('pg')
 require('dotenv').config()
 
-const app = express()
 
 // Бот продолжает работать нормально
 
