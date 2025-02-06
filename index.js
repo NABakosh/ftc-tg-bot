@@ -5,7 +5,6 @@ require('dotenv').config()
 
 
 // Бот продолжает работать нормально
-
 let mode = 0
 
 const startKey = new Keyboard().text('FLL').text('FTC').resized()
@@ -23,6 +22,7 @@ db.connect()
 
 // Инициализация бота
 const bot = new Bot(process.env.BotApiKey)
+
 
 // Функция для загрузки языков из папки locales
 const loadLanguages = path => {
@@ -109,6 +109,7 @@ bot.callbackQuery(['lang_ru', 'lang_en', 'lang_kz'], async ctx => {
 		input_field_placeholder: 'О чём бы хотели узнать?',
 		disable_web_page_preview: true,
 	})
+	await ctx.reply(languages[chosenLang].backQuestions)
 })
 
 // Команда /help
